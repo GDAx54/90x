@@ -1,0 +1,21 @@
+{
+  "name": "90x",
+  "short_name": "90x",
+  "description": "Apuestas sociales con amigos.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#121212",
+  "theme_color": "#00FF00",
+  "icons": [
+    {
+      "src": "[https://www.iconpacks.net/icons/2/free-soccer-icon-2646-thumb.png](https://www.iconpacks.net/icons/2/free-soccer-icon-2646-thumb.png)",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "[https://www.iconpacks.net/icons/2/free-soccer-icon-2646-thumb.png](https://www.iconpacks.net/icons/2/free-soccer-icon-2646-thumb.png)",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

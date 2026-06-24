@@ -1,0 +1,126 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-neon: var(--neon);
+  --color-neon-foreground: var(--neon-foreground);
+  --color-magenta: var(--magenta);
+  --font-display: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Onest", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, "SFMono-Regular", monospace;
+}
+
+:root {
+  --radius: 0.75rem;
+  /* Dark by default — trading × esports vibe */
+  --background: oklch(0.16 0.02 270);
+  --foreground: oklch(0.98 0.005 250);
+  --card: oklch(0.21 0.025 270);
+  --card-foreground: oklch(0.98 0.005 250);
+  --popover: oklch(0.21 0.025 270);
+  --popover-foreground: oklch(0.98 0.005 250);
+  --primary: oklch(0.85 0.22 145);            /* neon green */
+  --primary-foreground: oklch(0.16 0.02 270);
+  --secondary: oklch(0.28 0.04 270);
+  --secondary-foreground: oklch(0.98 0.005 250);
+  --muted: oklch(0.26 0.03 270);
+  --muted-foreground: oklch(0.72 0.03 260);
+  --accent: oklch(0.72 0.28 330);             /* magenta */
+  --accent-foreground: oklch(0.16 0.02 270);
+  --destructive: oklch(0.65 0.25 25);
+  --destructive-foreground: oklch(0.98 0.005 250);
+  --border: oklch(1 0 0 / 8%);
+  --input: oklch(1 0 0 / 12%);
+  --ring: oklch(0.85 0.22 145);
+  --neon: oklch(0.88 0.24 145);
+  --neon-foreground: oklch(0.16 0.02 270);
+  --magenta: oklch(0.72 0.28 330);
+
+  --gradient-neon: linear-gradient(135deg, oklch(0.85 0.22 145), oklch(0.72 0.28 330));
+  --gradient-card: linear-gradient(160deg, oklch(0.23 0.03 270) 0%, oklch(0.19 0.025 275) 100%);
+  --shadow-glow: 0 0 32px -8px oklch(0.85 0.22 145 / 0.5);
+  --shadow-magenta: 0 0 32px -8px oklch(0.72 0.28 330 / 0.45);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html {
+    color-scheme: dark;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01";
+    font-variant-numeric: lining-nums proportional-nums;
+    letter-spacing: -0.01em;
+    background-image:
+      radial-gradient(ellipse 80% 50% at 50% -10%, oklch(0.72 0.28 330 / 0.14), transparent),
+      radial-gradient(ellipse 60% 40% at 100% 100%, oklch(0.85 0.22 145 / 0.12), transparent);
+    min-height: 100vh;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-variant-numeric: lining-nums proportional-nums;
+    letter-spacing: -0.04em;
+    font-weight: 700;
+  }
+  /* Fluid type scale */
+  h1 { font-size: clamp(1.875rem, 1.4rem + 2.4vw, 3rem); line-height: 1.05; }
+  h2 { font-size: clamp(1.5rem, 1.2rem + 1.6vw, 2.25rem); line-height: 1.1; }
+  h3 { font-size: clamp(1.125rem, 1rem + 0.8vw, 1.5rem); line-height: 1.2; }
+  code, pre, .font-mono { font-family: var(--font-mono); font-variant-numeric: lining-nums proportional-nums; font-feature-settings: "zero", "ss01"; }
+  ::selection { background: oklch(0.85 0.22 145 / 0.25); color: var(--color-foreground); }
+  /* Smooth scroll + reduced motion fallback */
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  }
+  /* Sleek scrollbar */
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-thumb { background: oklch(1 0 0 / 0.08); border-radius: 9999px; }
+  ::-webkit-scrollbar-thumb:hover { background: oklch(1 0 0 / 0.16); }
+  button, a { transition: color .2s ease, background-color .2s ease, border-color .2s ease, transform .2s ease, box-shadow .2s ease; }
+}
+
+@keyframes pulse-gold {
+  0%, 100% { box-shadow: inset 2px 0 0 #FFD700, 0 0 0 rgba(255, 200, 40, 0); }
+  50% { box-shadow: inset 2px 0 0 #FFD700, 0 0 16px rgba(255, 200, 40, 0.25); }
+}
+.animate-pulse-gold { animation: pulse-gold 2.4s ease-in-out infinite; }
+
+@keyframes shimmer-silver {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+.animate-shimmer-silver { background-size: 200% 100%; animation: shimmer-silver 3.5s ease-in-out infinite; }
