@@ -1,0 +1,10 @@
+node_modules
+dist
+.output
+.nitro
+.tanstack
+.netlify/*
+!.netlify/results.md
+.env
+.env.*
+*.log
